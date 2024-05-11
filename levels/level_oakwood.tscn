@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cou7ui84hhayj"]
+[gd_scene load_steps=15 format=3 uid="uid://cou7ui84hhayj"]
 
 [ext_resource type="PackedScene" uid="uid://cjf36w5eq68j7" path="res://levels/level.tscn" id="1_xkecw"]
 [ext_resource type="Texture2D" uid="uid://e1fo3fckodwf" path="res://background and tileset/oakwood/background/background_layer_2.png" id="3_tc3jw"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bv2rs30ibmy3l" path="res://background and tileset/oakwood/props/lamp.png" id="6_8od30"]
 [ext_resource type="PackedScene" uid="uid://d0t4v17sejl7t" path="res://enemies/enemy_skull.tscn" id="7_jrhfw"]
 [ext_resource type="PackedScene" uid="uid://dv0mlrhm7aolo" path="res://enemies/enemy_mushroom.tscn" id="8_k7vmi"]
-[ext_resource type="PackedScene" uid="uid://dmaa526o7pbvl" path="res://enemies/enemy_flying_eye.tscn" id="9_o4bkn"]
 [ext_resource type="PackedScene" uid="uid://bvh2bo5j73hmi" path="res://enemies/hell-beast/powers/fire_pillar.tscn" id="10_vhmjk"]
 [ext_resource type="PackedScene" uid="uid://p7wwysmvxrgy" path="res://enemies/enemy_hell_beast.tscn" id="11_lbo24"]
 [ext_resource type="PackedScene" uid="uid://dedagssl7hcb8" path="res://enemies/enemy_skeleton.tscn" id="12_ok8yd"]
@@ -1298,19 +1297,15 @@ collision_mask = 7
 position = Vector2(63, 205)
 collision_mask = 7
 
-[node name="enemy_flying_eye" parent="enemies" index="2" instance=ExtResource("9_o4bkn")]
-position = Vector2(75, 160)
-collision_mask = 7
-
-[node name="enemy_hell_beast" parent="enemies" index="3" instance=ExtResource("11_lbo24")]
+[node name="enemy_hell_beast" parent="enemies" index="2" instance=ExtResource("11_lbo24")]
 position = Vector2(37, 199)
 collision_mask = 7
 
-[node name="enemy_skeleton" parent="enemies" index="4" instance=ExtResource("12_ok8yd")]
+[node name="enemy_skeleton" parent="enemies" index="3" instance=ExtResource("12_ok8yd")]
 position = Vector2(78, 198)
 collision_mask = 7
 
-[node name="enemy-skull" parent="enemies" index="5" instance=ExtResource("7_jrhfw")]
+[node name="enemy-skull" parent="enemies" index="4" instance=ExtResource("7_jrhfw")]
 position = Vector2(313, 180)
 
 [node name="player" parent="." index="3"]
