@@ -6,7 +6,7 @@
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("1_joadx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,3 +26,6 @@ collision_layer = 4
 
 [node name="hurtBox" parent="." instance=ExtResource("3_0o86x")]
 collision_layer = 4
+
+[connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]

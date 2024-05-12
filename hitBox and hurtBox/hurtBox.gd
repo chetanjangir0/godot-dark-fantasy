@@ -24,7 +24,7 @@ func _on_hurtBox_entered(hitbox):
 		if repeat:
 			damage_timer.start()  # Start the Timer when the Hurtbox enters the Hitbox
 
-func _on_hurtBox_exited(area):
+func _on_hurtBox_exited(_area):
 	insideHitbox = false
 	damage_timer.stop()  # Stop the Timer when the Hurtbox exits the Hitbox
 

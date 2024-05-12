@@ -247,6 +247,3 @@ shape = SubResource("CapsuleShape2D_tc4d4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox" index="0"]
 shape = SubResource("CapsuleShape2D_b7mam")
-
-[connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]

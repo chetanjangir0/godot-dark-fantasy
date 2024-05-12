@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv0mlrhm7aolo"]
+[gd_scene load_steps=20 format=3 uid="uid://dv0mlrhm7aolo"]
 
 [ext_resource type="PackedScene" uid="uid://bw5elqgndua44" path="res://enemies/enemy.tscn" id="1_dqnel"]
 [ext_resource type="Script" path="res://enemies/enemy_mushroom.gd" id="2_2uf6d"]
@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://caafuhf5nxso1" path="res://enemies/Mushroom/Attack.png" id="4_82b7l"]
 [ext_resource type="Texture2D" uid="uid://baut0xau7jic3" path="res://enemies/Mushroom/Death.png" id="5_h728v"]
 [ext_resource type="Texture2D" uid="uid://cmxpv18vjp3py" path="res://enemies/Mushroom/Take Hit.png" id="6_l1cht"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_keden"]
+size = Vector2(18, 36)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a442f"]
+radius = 147.489
 
 [sub_resource type="Animation" id="Animation_yb8s3"]
 length = 0.001
@@ -69,6 +75,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hitBox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("hitBox/CollisionShape2D2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_xkt5j"]
@@ -133,6 +163,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -7)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hitBox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("hitBox/CollisionShape2D2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_h5moq"]
@@ -406,8 +460,24 @@ _data = {
 "run": SubResource("Animation_7en8c")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0riw"]
+size = Vector2(18, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gnqs"]
+radius = 15.0333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnckk"]
+size = Vector2(22, 38)
+
 [node name="enemy_mushroom" instance=ExtResource("1_dqnel")]
 script = ExtResource("2_2uf6d")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_keden")
+
+[node name="CollisionShape2D" parent="detectionArea" index="0"]
+shape = SubResource("CircleShape2D_a442f")
 
 [node name="Sprite2D" parent="." index="2"]
 position = Vector2(0, -7)
@@ -419,3 +489,16 @@ libraries = {
 "": SubResource("AnimationLibrary_vlydk")
 }
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox" index="0"]
+position = Vector2(20, 2)
+shape = SubResource("RectangleShape2D_s0riw")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitBox" index="1"]
+position = Vector2(26, 3)
+shape = SubResource("CircleShape2D_8gnqs")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox" index="0"]
+shape = SubResource("RectangleShape2D_bnckk")

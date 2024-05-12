@@ -6,6 +6,7 @@ var anim_priority={'death':6,'primary_attack':5,'secondary_attack':5,'run':1,'ju
 var isFacingLeft:bool=false
 var canDash:bool=true
 func _physics_process(_delta):
+	Globals.player_pos=global_position
 	
 	##set the flip orientation to the privious when the player stands after moving
 	if velocity.x!=0:
