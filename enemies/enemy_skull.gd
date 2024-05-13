@@ -1,20 +1,12 @@
 extends enemy
-
-var playerNearby:bool=false
+const follow_speed:float=70.0
 
 func _process(_delta):
-	if playerNearby:
+	if playerAround:
 		animation.play('fire')
 	else:
 		animation.play('no_fire')
-
-
-func _on_detection_area_body_entered(_body):
-	playerNearby=true
-
-
-func _on_detection_area_body_exited(_body):
-	playerNearby=false
-
-
-
+		
+func _physics_process(delta):
+	follow_player(follow_speed)
+	move_and_slide()

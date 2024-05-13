@@ -1,7 +1,11 @@
 extends enemy
 var direction:float
-const SPEED = 80.0
+const follow_speed = 80.0
 
 func _physics_process(delta):
-	run_towards_player(SPEED)
+	follow_player(follow_speed)
 	
+	if not is_on_floor():
+		fall()
+		
+	move_and_slide()

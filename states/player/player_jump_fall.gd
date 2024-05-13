@@ -7,7 +7,7 @@ class_name JumpFall
 const JUMP_VELOCITY = -400.0
 var jump_buffer:bool=false
 var jump_buffer_timeout:float=0.2
-var gravity = 1700
+var gravity = 20
 const SPEED = 200.0
 
 func Enter():
@@ -19,7 +19,7 @@ func Update(_delta:float):
 	
 func Physics_update(delta:float):
 	if not player.is_on_floor():
-		player.velocity.y += gravity * delta
+		player.velocity.y += gravity
 		if player.velocity.y<0:
 			player.change_animation('jump')
 		else:

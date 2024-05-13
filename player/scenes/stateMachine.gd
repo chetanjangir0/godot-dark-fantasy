@@ -23,8 +23,6 @@ func _process(delta):
 func _physics_process(delta):
 	if current_state:
 		current_state.Physics_update(delta)
-	
-	
 	player.move_and_slide()
 	
 	

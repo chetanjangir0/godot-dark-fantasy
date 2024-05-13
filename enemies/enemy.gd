@@ -3,7 +3,7 @@ class_name enemy
 @onready var animation=$AnimationPlayer as AnimationPlayer
 var overLap_damage=10
 var hp=100
-
+var gravity = 20
 var playerAround=false
 #hurt box and player enemy overlap detection box are same
 
@@ -15,12 +15,17 @@ func take_damage(damage):
 func enemy():
 	pass
 
-func run_towards_player(speed:float):
+func follow_player(speed:float):
+	if not playerAround:
+		velocity.x=0
+		return
 	var dir=0
-	if playerAround:
-		dir=((Globals.player_pos-position).normalized()).x
+	dir=((Globals.player_pos-position).normalized()).x
 	velocity.x=dir*speed
-	move_and_slide()
+	
+
+func fall():
+	velocity.y += gravity
 
 func _on_detection_area_body_entered(body):
 	if body.has_method('player'):
@@ -29,5 +34,5 @@ func _on_detection_area_body_entered(body):
 
 func _on_detection_area_body_exited(body):
 	if body.has_method('player'):
-		playerAround=true
+		playerAround=false
 
