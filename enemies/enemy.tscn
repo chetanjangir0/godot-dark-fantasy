@@ -16,6 +16,10 @@ collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
 
+[node name="attackArea" type="Area2D" parent="."]
+collision_layer = 4
+monitorable = false
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 
@@ -29,3 +33,5 @@ collision_layer = 4
 
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="attackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="attackArea" to="." method="_on_attack_area_body_exited"]

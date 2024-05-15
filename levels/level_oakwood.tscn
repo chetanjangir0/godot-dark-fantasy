@@ -1292,6 +1292,7 @@ collision_mask = 7
 
 [node name="enemy_mushroom" parent="enemies" index="1" instance=ExtResource("8_k7vmi")]
 position = Vector2(279, 113)
+attackCooldown = null
 
 [node name="player" parent="." index="3"]
 position = Vector2(54, 104)
