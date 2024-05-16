@@ -221,12 +221,12 @@ shape = SubResource("RectangleShape2D_lxarr")
 [node name="CollisionShape2D" parent="detectionArea" index="0"]
 shape = SubResource("CircleShape2D_sw7vy")
 
-[node name="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" parent="." index="3"]
 position = Vector2(-32, -20)
 texture = ExtResource("2_n6ub7")
 hframes = 11
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_hk6kq")
 }

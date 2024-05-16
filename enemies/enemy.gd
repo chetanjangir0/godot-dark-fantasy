@@ -6,13 +6,16 @@ class_name enemy
 @onready var attackArea:Area2D=$attackArea
 @onready var sprite:Sprite2D=$Sprite2D
 @export var attackCooldown:float=2.0
-var overLap_damage=10
-var hp=100
 var gravity = 20
 var playerAround=false
 var canAttack=false
 var attackRecharged=true
 #hurt box and player enemy overlap detection box are same
+@export var hp=100:
+	set(value):
+		hp=value
+		if hp<=0:
+			die()
 
 var isFacingLeft:bool=false
 
@@ -58,7 +61,17 @@ func _on_attack_cooldown():
 
 func fall():
 	velocity.y += gravity
-
+	
+func die():
+	set_physics_process(false)
+	set_process(false)
+	hitBox.queue_free()
+	hurtBox.queue_free()
+	attackArea.queue_free()
+	animation.play('death')
+	
+	
+	
 
 
 func _on_detection_area_body_entered(body):

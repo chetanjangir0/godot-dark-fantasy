@@ -474,6 +474,7 @@ size = Vector2(22, 38)
 
 [node name="enemy_mushroom" instance=ExtResource("1_dqnel")]
 script = ExtResource("2_2uf6d")
+attackCooldown = 1.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 1)
