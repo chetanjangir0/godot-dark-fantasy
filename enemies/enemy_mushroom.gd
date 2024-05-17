@@ -4,7 +4,10 @@ const follow_speed = 80.0
 
 func _physics_process(delta):
 	if not canAttack:
-		follow_player(follow_speed)
+		if animation.current_animation=='attack':
+			await animation.animation_finished
+		else:
+			follow_player(follow_speed)
 	else:
 		velocity.x=0
 		attack()
