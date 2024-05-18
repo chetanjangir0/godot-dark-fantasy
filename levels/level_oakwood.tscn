@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cou7ui84hhayj"]
+[gd_scene load_steps=11 format=3 uid="uid://cou7ui84hhayj"]
 
 [ext_resource type="PackedScene" uid="uid://cjf36w5eq68j7" path="res://levels/level.tscn" id="1_xkecw"]
 [ext_resource type="Texture2D" uid="uid://e1fo3fckodwf" path="res://background and tileset/oakwood/background/background_layer_2.png" id="3_tc3jw"]
@@ -6,8 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://jb0naot7n100" path="res://background and tileset/oakwood/oak_woods_tileset.png" id="4_xd7nw"]
 [ext_resource type="PackedScene" uid="uid://cqj31g67147hj" path="res://enemies/enemy_demon.tscn" id="5_xh0w2"]
 [ext_resource type="Texture2D" uid="uid://bv2rs30ibmy3l" path="res://background and tileset/oakwood/props/lamp.png" id="6_8od30"]
-[ext_resource type="PackedScene" uid="uid://dv0mlrhm7aolo" path="res://enemies/enemy_mushroom.tscn" id="8_k7vmi"]
-[ext_resource type="PackedScene" uid="uid://bvh2bo5j73hmi" path="res://enemies/hell-beast/powers/fire_pillar.tscn" id="10_vhmjk"]
+[ext_resource type="PackedScene" uid="uid://d0t4v17sejl7t" path="res://enemies/enemy_skull.tscn" id="6_kchoa"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4by2p"]
 load_path = "res://.godot/imported/background_layer_1.png-22fcd347877d206a3bc759cbc61ec174.ctex"
@@ -1290,8 +1289,8 @@ layer_0/tile_data = PackedInt32Array(917504, 0, 0, 917505, 131072, 0, 917506, 19
 position = Vector2(600, 168)
 collision_mask = 7
 
-[node name="enemy_mushroom" parent="enemies" index="1" instance=ExtResource("8_k7vmi")]
-position = Vector2(279, 113)
+[node name="enemy-skull" parent="enemies" index="1" instance=ExtResource("6_kchoa")]
+position = Vector2(309, 170)
 
 [node name="player" parent="." index="3"]
 position = Vector2(54, 104)
@@ -1299,6 +1298,3 @@ position = Vector2(54, 104)
 [node name="Lamp" type="Sprite2D" parent="." index="5"]
 position = Vector2(76, 195)
 texture = ExtResource("6_8od30")
-
-[node name="fire_pillar" parent="." index="6" instance=ExtResource("10_vhmjk")]
-position = Vector2(156, 112)

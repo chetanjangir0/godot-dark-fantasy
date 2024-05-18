@@ -19,9 +19,19 @@ var attackRecharged=true
 
 var isFacingLeft:bool=false
 
-func _process(delta):
+	
+		
+func take_damage(damage):
+	hp-=damage
+	print(hp)
+
+
+func flipBody(opposite=false):
 	if velocity.x!=0:
-		isFacingLeft=velocity.x<0
+		if opposite:
+			isFacingLeft=!(velocity.x<0)
+		else:
+			isFacingLeft=velocity.x<0
 	if isFacingLeft:
 		hitBox.scale.x=-1
 		hurtBox.scale.x=-1
@@ -32,10 +42,6 @@ func _process(delta):
 		hurtBox.scale.x=1
 		attackArea.scale.x=1
 		sprite.flip_h=false
-		
-func take_damage(damage):
-	hp-=damage
-	print(hp)
 
 func enemy():
 	pass
