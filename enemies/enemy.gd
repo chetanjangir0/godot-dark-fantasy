@@ -6,7 +6,7 @@ class_name enemy
 @onready var attackArea:Area2D=$attackArea
 @onready var sprite:Sprite2D=$Sprite2D
 @export var attackCooldown:float=2.0
-var gravity = 20
+@export var gravity = 20
 var playerAround=false
 var canAttack=false
 var attackRecharged=true
