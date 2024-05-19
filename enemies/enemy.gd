@@ -4,12 +4,14 @@ class_name enemy
 @onready var hitBox:Area2D=$hitBox
 @onready var hurtBox:Area2D=$hurtBox
 @onready var attackArea:Area2D=$attackArea
+@onready var detectionArea:Area2D=$detectionArea
 @onready var sprite:Sprite2D=$Sprite2D
 @export var attackCooldown:float=2.0
 @export var gravity = 20
 var playerAround=false
 var canAttack=false
 var attackRecharged=true
+var anim_priority={'death':10,'hit':8,'attack':5,'run':2,'idle':1,'fire':1,'no_fire':1}
 #hurt box and player enemy overlap detection box are same
 @export var hp=100:
 	set(value):
@@ -23,6 +25,7 @@ var isFacingLeft:bool=false
 		
 func take_damage(damage):
 	hp-=damage
+	change_animation('hit')
 	print(hp)
 
 
@@ -59,7 +62,7 @@ func attack():
 	if not attackRecharged:
 		return
 	attackRecharged=false
-	animation.play('attack')
+	change_animation('attack')
 	get_tree().create_timer(attackCooldown).timeout.connect(_on_attack_cooldown)
 	
 func _on_attack_cooldown():
@@ -71,13 +74,21 @@ func fall():
 func die():
 	set_physics_process(false)
 	set_process(false)
-	hitBox.queue_free()
-	hurtBox.queue_free()
-	attackArea.queue_free()
-	animation.play('death')
+	for child in get_children():
+		if child is Area2D:
+			child.queue_free()
+	
+	change_animation('death')
+
 	
 	
-	
+
+func change_animation(new_anim:String)->void:
+	if not animation:
+		return
+	if animation.current_animation and anim_priority[animation.current_animation] > anim_priority[new_anim]:
+		return
+	animation.play(new_anim)	
 
 
 func _on_detection_area_body_entered(body):
