@@ -25,7 +25,6 @@ func _physics_process(delta):
 	if velocity.x!=0:
 		change_animation('run')
 	else:
-		if animation.current_animation!='attack' and animation.current_animation!='hit':
-			change_animation('idle')
+		change_animation('idle')
 		
 	move_and_slide()
