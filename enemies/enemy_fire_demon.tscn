@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo83p38u43re2"]
+[gd_scene load_steps=21 format=3 uid="uid://bo83p38u43re2"]
 
 [ext_resource type="PackedScene" uid="uid://bw5elqgndua44" path="res://enemies/enemy.tscn" id="1_fhbq3"]
 [ext_resource type="Script" path="res://enemies/enemy_fire_demon.gd" id="2_m84q6"]
@@ -7,6 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://c4de0wxvr8a5k" path="res://enemies/fire-demon/demon_attack.png" id="4_l5f34"]
 [ext_resource type="Texture2D" uid="uid://f8i5lep3li62" path="res://enemies/fire-demon/demon_death.png" id="5_3x25y"]
 [ext_resource type="Texture2D" uid="uid://kmeaq4y7psn5" path="res://enemies/fire-demon/demon_hit.png" id="6_epv6b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8axe"]
+size = Vector2(48, 71)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yrkw2"]
+radius = 162.003
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8enj"]
+size = Vector2(47, 67)
 
 [sub_resource type="Animation" id="Animation_00rbq"]
 length = 0.001
@@ -133,6 +142,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -35)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hitBox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("hitBox/CollisionShape2D2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_d2lr3"]
@@ -404,8 +437,29 @@ _data = {
 "walk": SubResource("Animation_31rk2")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hcohf"]
+radius = 32.5576
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eabgb"]
+radius = 29.0
+height = 147.604
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da8ox"]
+size = Vector2(72, 77)
+
 [node name="enemy_fire_demon" instance=ExtResource("1_fhbq3")]
 script = ExtResource("2_m84q6")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_a8axe")
+
+[node name="CollisionShape2D" parent="detectionArea" index="0"]
+shape = SubResource("CircleShape2D_yrkw2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackArea" index="0"]
+position = Vector2(-47.5, 9.5)
+shape = SubResource("RectangleShape2D_d8enj")
 
 [node name="Sprite2D" parent="." index="3"]
 position = Vector2(0, -35)
@@ -417,3 +471,21 @@ libraries = {
 "": SubResource("AnimationLibrary_m4bkg")
 }
 autoplay = "idle"
+
+[node name="hitBox" parent="." index="5"]
+damage = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox" index="0"]
+position = Vector2(-84, 12)
+shape = SubResource("CircleShape2D_hcohf")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitBox" index="1"]
+position = Vector2(-23, -16)
+rotation = 1.06814
+shape = SubResource("CapsuleShape2D_eabgb")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox" index="0"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_da8ox")
