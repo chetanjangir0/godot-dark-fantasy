@@ -17,7 +17,7 @@ func Enter():
 func Update(_delta:float):
 	pass
 	
-func Physics_update(delta:float):
+func Physics_update(_delta:float):
 	if not player.is_on_floor():
 		player.velocity.y += gravity
 		if player.velocity.y<0:

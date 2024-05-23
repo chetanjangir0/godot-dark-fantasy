@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnv745uq076o3"]
+[gd_scene load_steps=18 format=3 uid="uid://dnv745uq076o3"]
 
 [ext_resource type="PackedScene" uid="uid://bw5elqgndua44" path="res://enemies/enemy.tscn" id="1_niyca"]
 [ext_resource type="Texture2D" uid="uid://bofcs2rcou2bl" path="res://enemies/hell-hound/hell-hound-idle.png" id="2_8knur"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://2vryh2fkli6v" path="res://enemies/hell-hound/hell-hound-jump.png" id="3_ntsee"]
 [ext_resource type="Texture2D" uid="uid://4wck51c1ui4y" path="res://enemies/hell-hound/hell-hound-run.png" id="4_4odsn"]
 [ext_resource type="Texture2D" uid="uid://taimkooytqh5" path="res://enemies/hell-hound/hell-hound-walk.png" id="5_bhvdd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2suq3"]
+size = Vector2(32, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wi5vw"]
+radius = 119.004
 
 [sub_resource type="Animation" id="Animation_x80j2"]
 length = 0.001
@@ -72,7 +78,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_iyw5c"]
 resource_name = "idle"
-length = 5.0
+length = 3.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -117,10 +123,10 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 2, 1, 0]
+"values": [0, 0, 1, 2, 3, 4, 5, 2, 1, 0, 0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -339,16 +345,46 @@ _data = {
 "walk": SubResource("Animation_e7buo")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odjjw"]
+size = Vector2(29, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyjn7"]
+size = Vector2(11.5, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wg0jc"]
+size = Vector2(36, 25)
+
 [node name="enemy_hell_hound" instance=ExtResource("1_niyca")]
 script = ExtResource("2_xatfu")
+idle_time = 2.0
+walk_time = 3.0
 
-[node name="Sprite2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_2suq3")
+
+[node name="CollisionShape2D" parent="detectionArea" index="0"]
+shape = SubResource("CircleShape2D_wi5vw")
+
+[node name="Sprite2D" parent="." index="3"]
 position = Vector2(0, -4)
 texture = ExtResource("2_8knur")
 hframes = 6
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_xunnq")
 }
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox" index="0"]
+position = Vector2(3.5, 1.5)
+shape = SubResource("RectangleShape2D_odjjw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitBox" index="1"]
+position = Vector2(-10.75, -8.5)
+shape = SubResource("RectangleShape2D_nyjn7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox" index="0"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_wg0jc")

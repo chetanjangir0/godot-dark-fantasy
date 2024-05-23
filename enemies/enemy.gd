@@ -11,7 +11,7 @@ class_name enemy
 var playerAround=false
 var canAttack=false
 var attackRecharged=true
-var anim_priority={'death':10,'hit':8,'attack':5,'run':1,'idle':1,'fire':1,'no_fire':1}
+var anim_priority={'death':10,'hit':8,'attack':5,'run':1,'idle':1,'walk':1,'fire':1,'no_fire':1}
 #hurt box and player enemy overlap detection box are same
 @export var hp=100:
 	set(value):

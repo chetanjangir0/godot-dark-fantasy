@@ -3,10 +3,10 @@ var direction:float
 const follow_speed = 80.0
 
 
-func _process(delta):
+func _process(_delta):
 	flipBody()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not canAttack:
 		if animation.current_animation=='attack':#even if player moves out of the attack area during attack the attack is still perforemed 
 			await animation.animation_finished

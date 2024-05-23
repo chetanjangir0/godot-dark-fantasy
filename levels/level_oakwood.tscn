@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cqj31g67147hj" path="res://enemies/enemy_demon.tscn" id="5_xh0w2"]
 [ext_resource type="Texture2D" uid="uid://bv2rs30ibmy3l" path="res://background and tileset/oakwood/props/lamp.png" id="6_8od30"]
 [ext_resource type="PackedScene" uid="uid://dv0mlrhm7aolo" path="res://enemies/enemy_mushroom.tscn" id="6_dgbdt"]
-[ext_resource type="PackedScene" uid="uid://dedagssl7hcb8" path="res://enemies/enemy_skeleton.tscn" id="7_r6isx"]
+[ext_resource type="PackedScene" uid="uid://dnv745uq076o3" path="res://enemies/enemy_hell_hound.tscn" id="7_u6pp1"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4by2p"]
 load_path = "res://.godot/imported/background_layer_1.png-22fcd347877d206a3bc759cbc61ec174.ctex"
@@ -1293,8 +1293,8 @@ collision_mask = 7
 [node name="enemy_mushroom" parent="enemies" index="1" instance=ExtResource("6_dgbdt")]
 position = Vector2(515, 202)
 
-[node name="enemy_skeleton" parent="enemies" index="2" instance=ExtResource("7_r6isx")]
-position = Vector2(194, 157)
+[node name="enemy_hell_hound" parent="enemies" index="2" instance=ExtResource("7_u6pp1")]
+position = Vector2(248, 146)
 
 [node name="player" parent="." index="3"]
 position = Vector2(54, 104)
