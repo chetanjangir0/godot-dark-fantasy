@@ -283,12 +283,12 @@ script = ExtResource("2_p24rf")
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_xmo45")
 
-[node name="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" parent="." index="3"]
 position = Vector2(0, -7)
 texture = ExtResource("2_1jegf")
 hframes = 6
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_fdpoe")
 }

@@ -20,7 +20,8 @@ func _physics_process(_delta):
 		fall()
 	
 	
-	
+	if animation.current_animation=='hit':
+		velocity.x=0
 	
 	if velocity.x!=0:
 		change_animation('run')

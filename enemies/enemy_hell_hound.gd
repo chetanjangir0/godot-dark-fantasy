@@ -54,6 +54,6 @@ func set_walk():
 	walk_dir = -walk_dir # change direction after each walk period
 	change_animation('walk')
 
-func walk(walk_dir, walk_speed):
-	velocity.x = walk_dir * walk_speed
+func walk(dir, speed):
+	velocity.x = dir * speed
 
