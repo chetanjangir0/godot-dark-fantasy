@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://e1fo3fckodwf" path="res://background and tileset/oakwood/background/background_layer_2.png" id="3_tc3jw"]
 [ext_resource type="Texture2D" uid="uid://q5wlb041ptac" path="res://background and tileset/oakwood/background/background_layer_3.png" id="4_ientt"]
 [ext_resource type="Texture2D" uid="uid://jb0naot7n100" path="res://background and tileset/oakwood/oak_woods_tileset.png" id="4_xd7nw"]
+[ext_resource type="PackedScene" uid="uid://dmaa526o7pbvl" path="res://enemies/enemy_flying_eye.tscn" id="6_6qwpv"]
 [ext_resource type="Texture2D" uid="uid://bv2rs30ibmy3l" path="res://background and tileset/oakwood/props/lamp.png" id="6_8od30"]
-[ext_resource type="PackedScene" uid="uid://dfrxv740nsd36" path="res://enemies/enemy_goblin.tscn" id="6_056xq"]
 [ext_resource type="PackedScene" uid="uid://dv0mlrhm7aolo" path="res://enemies/enemy_mushroom.tscn" id="6_dgbdt"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4by2p"]
@@ -1288,8 +1288,8 @@ layer_0/tile_data = PackedInt32Array(917504, 0, 0, 917505, 131072, 0, 917506, 19
 [node name="enemy_mushroom" parent="enemies" index="0" instance=ExtResource("6_dgbdt")]
 position = Vector2(594, 204)
 
-[node name="enemy_goblin" parent="enemies" index="1" instance=ExtResource("6_056xq")]
-position = Vector2(294, 139)
+[node name="enemy_flying_eye" parent="enemies" index="1" instance=ExtResource("6_6qwpv")]
+position = Vector2(325, 181)
 
 [node name="player" parent="." index="3"]
 position = Vector2(54, 104)

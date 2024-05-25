@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmaa526o7pbvl"]
+[gd_scene load_steps=19 format=3 uid="uid://dmaa526o7pbvl"]
 
 [ext_resource type="PackedScene" uid="uid://bw5elqgndua44" path="res://enemies/enemy.tscn" id="1_3qge0"]
 [ext_resource type="Script" path="res://enemies/enemy_flying_eye.gd" id="2_1b7ip"]
@@ -6,6 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://bsxfvjbp4q2u" path="res://enemies/Flying eye/Attack.png" id="3_ww2bi"]
 [ext_resource type="Texture2D" uid="uid://cw72vbeai7l4t" path="res://enemies/Flying eye/Death.png" id="4_58tsd"]
 [ext_resource type="Texture2D" uid="uid://bi8g45hug0ymt" path="res://enemies/Flying eye/Take Hit.png" id="5_mjje7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xtd"]
+size = Vector2(14, 17)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_myttq"]
+radius = 104.043
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j5udf"]
+radius = 22.8035
 
 [sub_resource type="Animation" id="Animation_mafgf"]
 length = 0.001
@@ -128,10 +137,22 @@ tracks/4/path = NodePath("Sprite2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-5, -4), Vector2(-1, 0), Vector2(1, 2), Vector2(3, 4), Vector2(-5, -4)]
+"values": [Vector2(0, -4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hitBox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_fl0xg"]
@@ -196,7 +217,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-5, -17), Vector2(-5, -17)]
+"values": [Vector2(0, -17), Vector2(0, -17)]
 }
 
 [sub_resource type="Animation" id="Animation_dihlm"]
@@ -262,12 +283,12 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-5, -15), Vector2(-5, -15)]
+"values": [Vector2(0, -15), Vector2(0, -15)]
 }
 
 [sub_resource type="Animation" id="Animation_mwogu"]
 resource_name = "hit"
-length = 0.45
+length = 0.3
 step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -312,7 +333,7 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 2, 3, 0]
@@ -327,7 +348,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-5, -4)]
+"values": [Vector2(0, -4)]
 }
 
 [sub_resource type="Animation" id="Animation_ekvma"]
@@ -392,7 +413,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-5, -4)]
+"values": [Vector2(0, -4)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_la58v"]
@@ -405,16 +426,44 @@ _data = {
 "idle": SubResource("Animation_ekvma")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hkbpg"]
+radius = 12.0767
+height = 30.4185
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nxkm"]
+radius = 14.0
+
 [node name="enemy_flying_eye" instance=ExtResource("1_3qge0")]
 script = ExtResource("2_1b7ip")
+gravity = 90
 
-[node name="Sprite2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_s8xtd")
+
+[node name="CollisionShape2D" parent="detectionArea" index="0"]
+shape = SubResource("CircleShape2D_myttq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackArea" index="0"]
+shape = SubResource("CircleShape2D_j5udf")
+
+[node name="Sprite2D" parent="." index="3"]
 position = Vector2(-5, -3)
 texture = ExtResource("2_hl45u")
 hframes = 8
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 "": SubResource("AnimationLibrary_la58v")
 }
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox" index="0"]
+position = Vector2(11, 3)
+rotation = -1.11177
+shape = SubResource("CapsuleShape2D_hkbpg")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox" index="0"]
+position = Vector2(5, -1)
+shape = SubResource("CircleShape2D_1nxkm")
