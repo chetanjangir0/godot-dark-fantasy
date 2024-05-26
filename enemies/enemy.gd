@@ -20,8 +20,6 @@ var anim_priority={'death':10,'fall':10,'hit':8,'attack':5,'run':1,'idle':1,'wal
 			die()
 
 var isFacingLeft:bool=false
-
-	
 		
 func take_damage(damage):
 	hp-=damage
@@ -72,13 +70,14 @@ func fall():
 	velocity.y += gravity
 	
 func die():
+	change_animation('death')
+	await animation.animation_finished
 	set_physics_process(false)
 	set_process(false)
 	for child in get_children():
 		if child is Area2D:
 			child.queue_free()
 	
-	change_animation('death')
 
 	
 	

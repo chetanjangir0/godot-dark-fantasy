@@ -435,6 +435,7 @@ radius = 14.0
 
 [node name="enemy_flying_eye" instance=ExtResource("1_3qge0")]
 script = ExtResource("2_1b7ip")
+attackCooldown = 0.5
 gravity = 90
 
 [node name="CollisionShape2D" parent="." index="0"]
