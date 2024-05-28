@@ -75,7 +75,7 @@ func die():
 	
 
 func change_animation(new_anim:String)->void:
-	if not animation:
+	if not animation or not animation.has_animation(new_anim):
 		return
 	if animation.current_animation and anim_priority[animation.current_animation] > anim_priority[new_anim]:
 		return
