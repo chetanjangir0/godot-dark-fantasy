@@ -19,7 +19,10 @@ var anim_priority={'death':10,'fall':10,'hit':8,'attack':5,'run':1,'idle':1,'wal
 		if hp<=0:
 			die()
 
-var isFacingLeft:bool=false
+var isFacingLeft:bool=false:
+	set(val):
+		isFacingLeft=val
+		scale.x=-1*scale.x
 		
 func take_damage(damage):
 	hp-=damage
@@ -29,20 +32,9 @@ func take_damage(damage):
 
 func flipBody(opposite=false):
 	if velocity.x!=0:
-		if opposite:
-			isFacingLeft=!(velocity.x<0)
-		else:
-			isFacingLeft=velocity.x<0
-	if isFacingLeft:
-		hitBox.scale.x=-1
-		hurtBox.scale.x=-1
-		attackArea.scale.x=-1
-		sprite.flip_h=true
-	else:
-		hitBox.scale.x=1
-		hurtBox.scale.x=1
-		attackArea.scale.x=1
-		sprite.flip_h=false
+		var facing_left =!(velocity.x < 0) if opposite else velocity.x < 0
+		if facing_left!=isFacingLeft:
+			isFacingLeft=facing_left
 
 func enemy():
 	pass
