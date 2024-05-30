@@ -2,9 +2,13 @@ extends State
 class_name PrimaryAttack
 
 @export var animation: AnimationPlayer
-@export var player:CharacterBody2D
+@export var player:Player
 
 func Enter():
+	if not player.canAttack:
+		return
+	player.canAttack=false
+	player.get_tree().create_timer(player.attackCooldown).timeout.connect(player._on_attack_cooldown)
 	player.change_animation('primary_attack')
 	
 	
