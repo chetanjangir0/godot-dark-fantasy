@@ -6,8 +6,11 @@ class_name enemy
 @onready var attackArea:Area2D=$attackArea
 @onready var detectionArea:Area2D=$detectionArea
 @onready var sprite:Sprite2D=$Sprite2D
+@onready var rayCast:RayCast2D=$RayCast2D
+
 @export var attackCooldown:float=2.0
 @export var gravity = 20
+
 var playerAround=false
 var canAttack=false
 var attackRecharged=true
@@ -40,12 +43,18 @@ func enemy():
 	pass
 
 func follow_player(speed:float):
-	if not playerAround or hp<=0:
-		velocity.x=0
-		return
 	var dir=0
-	dir=((Globals.player_pos-position).normalized()).x
-	velocity.x=dir*speed
+	if playerAround:
+		dir=((Globals.player_pos-position).normalized()).x
+		#only stops enemy if there is a trench "between"** enemy and player 
+		var isSameDir= (dir<0 and isFacingLeft) or (dir>0 and not isFacingLeft)
+		if not rayCast.is_colliding() and isSameDir:
+			velocity.x=0
+			return
+			
+		velocity.x=dir*speed
+	else:
+		velocity.x=0
 
 
 func attack():

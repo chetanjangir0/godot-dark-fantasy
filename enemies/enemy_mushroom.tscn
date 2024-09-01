@@ -509,3 +509,7 @@ disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox" index="0"]
 shape = SubResource("RectangleShape2D_bnckk")
+
+[node name="RayCast2D" parent="." index="7"]
+position = Vector2(17, 0)
+target_position = Vector2(0, 23)

@@ -31,6 +31,9 @@ collision_layer = 4
 [node name="hurtBox" parent="." instance=ExtResource("3_0o86x")]
 collision_layer = 4
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 2
+
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="attackArea" to="." method="_on_attack_area_body_entered"]
