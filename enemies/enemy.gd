@@ -11,6 +11,7 @@ class_name enemy
 @export var attackCooldown:float=2.0
 @export var gravity = 20
 
+var isAlive=true
 var playerAround=false
 var canAttack=false
 var attackRecharged=true
@@ -28,12 +29,16 @@ var isFacingLeft:bool=false:
 		scale.x=-1*scale.x
 		
 func take_damage(damage):
+	if not isAlive:
+		return
 	hp-=damage
 	change_animation('hit')
 	print(hp)
 
 
 func flipBody(opposite=false):
+	if not isAlive:
+		return
 	if velocity.x!=0:
 		var facing_left =!(velocity.x < 0) if opposite else velocity.x < 0
 		if facing_left!=isFacingLeft:
@@ -43,6 +48,8 @@ func enemy():
 	pass
 
 func follow_player(speed:float):
+	if not isAlive:
+		return
 	var dir=0
 	if playerAround:
 		dir=((Globals.player_pos-position).normalized()).x
@@ -58,7 +65,7 @@ func follow_player(speed:float):
 
 
 func attack():
-	if not attackRecharged:
+	if not attackRecharged and not isAlive:
 		return
 	attackRecharged=false
 	change_animation('attack')
@@ -71,13 +78,8 @@ func fall():
 	velocity.y += gravity
 	
 func die():
+	isAlive=false
 	change_animation('death')
-	await animation.animation_finished
-	set_physics_process(false)
-	set_process(false)
-	for child in get_children():
-		if child is Area2D:
-			child.queue_free()
 	
 
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dngcmcatirj5a"]
+[gd_scene load_steps=14 format=3 uid="uid://dngcmcatirj5a"]
 
 [ext_resource type="PackedScene" uid="uid://cou7ui84hhayj" path="res://levels/level_oakwood.tscn" id="1_a3g31"]
 [ext_resource type="Texture2D" uid="uid://ceoklirq0qvaw" path="res://background and tileset/oakwood/props/sign.png" id="2_c3h6b"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://n0oo1bgr8v3a" path="res://interactives/shop.tscn" id="10_xtq2i"]
 [ext_resource type="PackedScene" uid="uid://dv0mlrhm7aolo" path="res://enemies/enemy_mushroom.tscn" id="11_ssw16"]
 [ext_resource type="PackedScene" uid="uid://cqj31g67147hj" path="res://enemies/enemy_demon.tscn" id="12_iebb1"]
+[ext_resource type="PackedScene" uid="uid://dedagssl7hcb8" path="res://enemies/enemy_skeleton.tscn" id="13_x312v"]
 
 [node name="level 1" instance=ExtResource("1_a3g31")]
 
@@ -84,3 +85,6 @@ position = Vector2(300, 201)
 
 [node name="enemy-demon" parent="enemies" index="1" instance=ExtResource("12_iebb1")]
 position = Vector2(2397, 67)
+
+[node name="enemy_skeleton" parent="enemies" index="2" instance=ExtResource("13_x312v")]
+position = Vector2(680, 197)
