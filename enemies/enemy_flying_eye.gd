@@ -26,16 +26,11 @@ func _physics_process(_delta):
 	#some death logic
 	if is_on_floor():
 		change_animation('death')
-		await animation.animation_finished
-		set_process(false)
-		set_physics_process(false)
-		for child in get_children():
-			if child is Area2D:
-				child.queue_free()
 		
 	move_and_slide()
 	
 func die():
+	isAlive=false
 	if not is_on_floor():
 		fall()
 		change_animation('fall')

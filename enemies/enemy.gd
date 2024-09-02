@@ -11,6 +11,7 @@ class_name enemy
 @export var attackCooldown:float=2.0
 @export var gravity = 20
 
+@export var canFly=false
 var isAlive=true
 var playerAround=false
 var canAttack=false
@@ -55,7 +56,7 @@ func follow_player(speed:float):
 		dir=((Globals.player_pos-position).normalized()).x
 		#only stops enemy if there is a trench "between"** enemy and player 
 		var isSameDir= (dir<0 and isFacingLeft) or (dir>0 and not isFacingLeft)
-		if not rayCast.is_colliding() and isSameDir:
+		if not rayCast.is_colliding() and isSameDir and not canFly:
 			velocity.x=0
 			return
 			

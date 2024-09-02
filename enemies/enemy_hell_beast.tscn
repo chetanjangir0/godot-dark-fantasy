@@ -293,3 +293,7 @@ libraries = {
 "": SubResource("AnimationLibrary_fdpoe")
 }
 autoplay = "idle"
+
+[node name="RayCast2D" parent="." index="7"]
+position = Vector2(-22, 0)
+target_position = Vector2(0, 32)
