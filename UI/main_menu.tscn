@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://duy5smq0oknd8"]
+
+[ext_resource type="Texture2D" uid="uid://b4jlbc66pfs6n" path="res://UI/UI_background.png" id="1_fbiry"]
+[ext_resource type="Script" path="res://UI/main_menu.gd" id="1_yawbd"]
+[ext_resource type="FontFile" uid="uid://boxvt8hmr5vt1" path="res://UI/The Centurion .ttf" id="2_jifqo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tq50f"]
+texture = ExtResource("1_fbiry")
+modulate_color = Color(0.72549, 0.72549, 0.72549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejgy0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+shadow_color = Color(0, 0, 0, 0.32549)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5f2y"]
+bg_color = Color(0.831373, 0.831373, 0.831373, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+shadow_color = Color(0, 0, 0, 0.32549)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fx4tb"]
+bg_color = Color(0.709804, 0.709804, 0.709804, 1)
+corner_radius_top_left = 17
+corner_radius_top_right = 17
+corner_radius_bottom_right = 17
+corner_radius_bottom_left = 17
+shadow_color = Color(0, 0, 0, 0.32549)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t4ov1"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yawbd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tq50f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -61.0
+offset_right = 237.5
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_ejgy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i5f2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fx4tb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t4ov1")
+text = "Start"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_ejgy0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i5f2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fx4tb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t4ov1")
+text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -423.5
+offset_top = -320.0
+offset_right = 423.5
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 13
+theme_override_fonts/font = ExtResource("2_jifqo")
+theme_override_font_sizes/font_size = 117
+text = "The Forsaken Knight"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_exit_pressed"]

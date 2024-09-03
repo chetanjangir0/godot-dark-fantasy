@@ -9,5 +9,5 @@ func _on_player_entered(body):
 		if ResourceLoader.exists(next_level):
 			get_tree().change_scene_to_file(next_level)
 		else:
-			print('main menu')
+			get_tree().change_scene_to_file('res://UI/main_menu.tscn')
 		
