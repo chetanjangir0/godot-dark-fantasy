@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dngcmcatirj5a"]
+[gd_scene load_steps=16 format=3 uid="uid://dngcmcatirj5a"]
 
 [ext_resource type="PackedScene" uid="uid://cou7ui84hhayj" path="res://levels/level_oakwood.tscn" id="1_a3g31"]
 [ext_resource type="Texture2D" uid="uid://ceoklirq0qvaw" path="res://background and tileset/oakwood/props/sign.png" id="2_c3h6b"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cqj31g67147hj" path="res://enemies/enemy_demon.tscn" id="12_iebb1"]
 [ext_resource type="PackedScene" uid="uid://dedagssl7hcb8" path="res://enemies/enemy_skeleton.tscn" id="13_x312v"]
 [ext_resource type="PackedScene" uid="uid://dmaa526o7pbvl" path="res://enemies/enemy_flying_eye.tscn" id="14_jdq82"]
+[ext_resource type="PackedScene" uid="uid://bjvlv7sljkae7" path="res://interactives/fireplace.tscn" id="15_tna45"]
 
 [node name="level 1" instance=ExtResource("1_a3g31")]
 
@@ -92,3 +93,6 @@ position = Vector2(680, 197)
 
 [node name="enemy_flying_eye" parent="enemies" index="3" instance=ExtResource("14_jdq82")]
 position = Vector2(79, 194)
+
+[node name="fireplace" parent="." index="7" instance=ExtResource("15_tna45")]
+position = Vector2(244, 195)

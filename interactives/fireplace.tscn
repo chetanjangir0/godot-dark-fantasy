@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjvlv7sljkae7"]
+
+[ext_resource type="Script" path="res://interactives/fireplace.gd" id="1_8rx22"]
+[ext_resource type="Texture2D" uid="uid://ds2a6xp57esvf" path="res://interactives/spr_FirePlace2_strip.png" id="1_vbp0x"]
+
+[sub_resource type="Animation" id="Animation_e2h75"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_pijtq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j20mt"]
+_data = {
+"RESET": SubResource("Animation_pijtq"),
+"idle": SubResource("Animation_e2h75")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkquo"]
+radius = 19.0263
+
+[node name="fireplace" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_8rx22")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vbp0x")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j20mt")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("CircleShape2D_qkquo")
+
+[connection signal="body_entered" from="." to="." method="_on_player_entered"]
