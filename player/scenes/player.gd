@@ -25,11 +25,11 @@ func change_animation(new_anim:String)->void:
 	animation.play(new_anim)
 
 func take_damage(damage):
-	print('player is being hit')
 	Globals.player_health-=damage
 	print(Globals.player_health)
 
-
+func go_to_death_menu():
+	get_tree().change_scene_to_file('res://UI/death_menu.tscn')
 func _on_attack_cooldown():
 	canAttack=true
 

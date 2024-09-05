@@ -430,7 +430,7 @@ height = 66.0
 script = ExtResource("2_yqyc3")
 gravity = 100
 canFly = true
-hp = 20
+hp = 40
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_ddb5e")
@@ -449,6 +449,9 @@ libraries = {
 "": SubResource("AnimationLibrary_o7c8f")
 }
 autoplay = "no_fire"
+
+[node name="hitBox" parent="." index="5"]
+damage = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox" index="0"]
 position = Vector2(-5, 0)

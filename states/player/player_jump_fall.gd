@@ -50,6 +50,8 @@ func Physics_update(_delta:float):
 		Transitioned.emit(self,'PrimaryAttack')
 	if Input.is_action_just_pressed('secondary_action'):
 		Transitioned.emit(self,'SecondaryAttack')
+	if Globals.player_pos.y>500:
+		Transitioned.emit(self,'Death')
 	
 	
 	
