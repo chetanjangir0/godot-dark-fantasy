@@ -5,6 +5,10 @@ class_name SecondaryAttack
 @export var player:CharacterBody2D
 
 func Enter():
+	if not player.canAttack:
+		return
+	player.canAttack=false
+	player.get_tree().create_timer(player.attackCooldown).timeout.connect(player._on_attack_cooldown)
 	player.change_animation('secondary_attack')
 	
 	

@@ -451,7 +451,7 @@ libraries = {
 autoplay = "no_fire"
 
 [node name="hitBox" parent="." index="5"]
-damage = 40
+damage = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox" index="0"]
 position = Vector2(-5, 0)
